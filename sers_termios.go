@@ -238,8 +238,7 @@ func Open(fn string) (SerialPort, error) {
 	// open the TTY device read/write, nonblocking, i.e. not waiting
 	// for the CARRIER signal and without the TTY controlling the process
 	fd, err := syscall.Open(fn, syscall.O_RDWR|
-		syscall.O_NOCTTY|
-		syscall.O_NONBLOCK,
+		syscall.O_NOCTTY,
 		0666)
 	if err != nil {
 		return nil, fmt.Errorf("open %s: %v", fn, err)
